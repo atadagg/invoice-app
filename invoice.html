@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+        <meta http-equiv="Content-Type" content="charset=utf-8" />
+        <style type="text/css">
+          * {
+            font-family: "{{Invoice_FONT}}", monospace;
+          }          
+        </style>
+    </head>
+    <body id="all">
+        <div class="container">
+            <div class="row" style="border-radius: 25px; border: 2px solid #004C76; padding: 20px; ">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <form>
+                            <address class="text-left">
+                                <div id="fromcompd">
+                                <label for="fromcomp">From Company:</label><br>
+                                <input class="row" style="font-size: 15px; font-weight: bold;" type="text" id="fromcomp"><br>
+                                </div>
+                                <div id="fromaddressd">
+                                <label for="fromaddress">Company Address:</label><br>
+                                <input class="row" id="fromaddress" type="text"><br>
+                                </div>
+                                <div id="fromcscd">
+                                <label for="fromcsc">City/State/Country:</label><br>
+                                <input class="row" id="fromcsc" type="text"><br>
+                                </div>
+                            </address>
+                        </form>
+                        </div>
+                        <div class="col-lg-6" style="position: fixed; left: 0px; right: 0px; top: 0px;">
+                            <div class="row">
+                                <!--<img src="{{Invoice_FROM_LOGO}}" style="margin-left: 510px; width: 200px; height: 100px;">-->
+                                
+                            </div>
+                            <div class="row">
+                                <!--<img src="{{Invoice_SIGNATURE}}" style="margin-left: 510px; width: 200px; height: 100px;">-->
+                            </div>
+                        </div>                
+                    </div>
+                    <div class="row" id="dated">
+                    <label for="date">Invoice Date:</label><br>
+                    <input id="date" type="text"><br>
+                    </div>
+                    <div class="row" id="invoiceidd">
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <address class="text-left">
+                                <div id="tocompd">
+                                <label for="tocomp">To Company:</label><br>
+                                <input class="row" style="font-size: 15px; font-weight: bold;" id="tocomp" type="text"><br>
+                                </div>
+                                <div id="toaddressd">
+                                <label for="toaddress">Company Adress:</label><br>
+                                <input id="toaddress" class="row" type="text"><br>
+                                </div>
+                                <div id="tocscd">
+                                <label for="tocsc">City/State/Country:</label><br>
+                                <input class="row" id="tocsc"><br>
+                                </div>
+                            </address>
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="confirm()">Confirm</button>
+                    </div>
+                    <div class="row table-responsive">
+                        <table class="table table-condensed table-striped">
+                            <tbody>
+                                <tr>
+                                    <label for="item">Invoice Item:</label>
+                                    <input type="text" id="item">
+                                    <label for="itemprice">Invoice Price:</label>
+                                    <input type="text" id="itemprice">
+                                    <button id="itembutton" type="button" onclick="itemButtonFunction()">Add Item</button>
+                                </tr>
+                            </tbody> 
+                            <tbody id="thetable">
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th class="text-right">&nbsp;</th>
+                                    <th class="text-right">&nbsp;</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Sub Total:</th>
+                                    <th class="text-right" id="subtotal">
+                                        + 0
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Discount Price:</th>
+                                    <th class="text-right" id="discount">- <input type="text" id="discountinput"></th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">New Sub Total:</th>
+                                    <th class="text-right" id="newsub">= </th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right" id="vatlabel">
+                                        <label for="vatcountry">VAT Country:</label> <input type="text" id="vatcountry"> <label for="vat">VAT:</label> <input type="text" id="vat">
+                                    </th>
+                                    <th class="text-right" id="wholevat"></th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Total:</th>
+                                    <th class="text-right" id="total">= </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div style="text-align: right;">
+                        <button onclick="newSubFunction()" style="text-align: right;">Finish</button>
+                        </div>
+                    </div>
+                    <button onclick="pdf()" id="download">Download as PDF</button>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>    
+        </div>
+        <script type="text/javascript" src="bro.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    </body>
+</html>
